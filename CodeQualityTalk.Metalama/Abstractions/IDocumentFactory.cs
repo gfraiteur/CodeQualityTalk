@@ -1,6 +1,6 @@
 ﻿using Metalama.Extensions.Architecture.Aspects;
 
-namespace CodeQualityTalk;
+namespace CodeQualityTalk.Abstractions;
 
 [DerivedTypesMustRespectNamingConvention("*Factory")]
 public interface IDocumentFactory

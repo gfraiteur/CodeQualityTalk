@@ -1,3 +1,5 @@
+using CodeQualityTalk.Abstractions;
+
 namespace CodeQualityTalk;
 
 internal class CreditNote : IDocument

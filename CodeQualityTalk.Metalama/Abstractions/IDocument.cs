@@ -1,4 +1,4 @@
-namespace CodeQualityTalk;
+namespace CodeQualityTalk.Abstractions;
 
 public interface IDocument
 {

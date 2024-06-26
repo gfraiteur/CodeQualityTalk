@@ -1,4 +1,6 @@
-namespace CodeQualityTalk;
+using CodeQualityTalk.Abstractions;
+
+namespace CodeQualityTalk.Factories;
 
 public class CreditNoteCreator : IDocumentFactory
 {

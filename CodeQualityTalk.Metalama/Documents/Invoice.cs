@@ -1,4 +1,6 @@
-namespace CodeQualityTalk;
+using CodeQualityTalk.Abstractions;
+
+namespace CodeQualityTalk.Documents;
 
 internal class Invoice : IDocument
 {

@@ -1,4 +1,7 @@
-namespace CodeQualityTalk;
+using CodeQualityTalk.Abstractions;
+using CodeQualityTalk.Documents;
+
+namespace CodeQualityTalk.Factories;
 
 public class InvoiceFactory : IDocumentFactory
 {

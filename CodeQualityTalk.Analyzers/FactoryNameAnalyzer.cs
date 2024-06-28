@@ -28,17 +28,17 @@ namespace CodeQualityTalk.Analyzers
 
         private void AnalyzeSemanticModel(SemanticModelAnalysisContext context)
         {
-            new Visitor(context).Visit(context.FilterTree.GetRoot());
+            new Walker(context).Visit(context.FilterTree.GetRoot());
         }
 
         public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics { get; }
             = [_diagnosticDescriptor];
 
-        class Visitor : CSharpSyntaxWalker
+        class Walker : CSharpSyntaxWalker
         {
             private readonly SemanticModelAnalysisContext _context;
 
-            public Visitor(SemanticModelAnalysisContext context)
+            public Walker(SemanticModelAnalysisContext context)
             {
                 _context = context;
             }

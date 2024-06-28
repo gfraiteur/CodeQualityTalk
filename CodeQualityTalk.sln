@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeQualityTalk.ArchUnitTes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeQualityTalk.Analyzers", "CodeQualityTalk.Analyzers\CodeQualityTalk.Analyzers.csproj", "{F4406B37-B766-4023-B7F5-E34E57904363}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeQualityTalk.Verifier", "CodeQualityTalk.Verifier\CodeQualityTalk.Verifier.csproj", "{0810F776-66A1-46B1-8BB6-AF2D8A59BA6A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{F4406B37-B766-4023-B7F5-E34E57904363}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4406B37-B766-4023-B7F5-E34E57904363}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F4406B37-B766-4023-B7F5-E34E57904363}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0810F776-66A1-46B1-8BB6-AF2D8A59BA6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0810F776-66A1-46B1-8BB6-AF2D8A59BA6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0810F776-66A1-46B1-8BB6-AF2D8A59BA6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0810F776-66A1-46B1-8BB6-AF2D8A59BA6A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

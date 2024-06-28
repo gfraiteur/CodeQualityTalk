@@ -10,5 +10,17 @@
     <ItemGroup>
         <ProjectReference Include="../CodeQualityTalk.Analyzers/CodeQualityTalk.Analyzers.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false"  />
     </ItemGroup>
+    
+    <ItemGroup>
+      <Compile Remove="NDependOut\**" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <EmbeddedResource Remove="NDependOut\**" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <None Remove="NDependOut\**" />
+    </ItemGroup>
 
 </Project>

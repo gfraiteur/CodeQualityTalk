@@ -4,7 +4,6 @@ using ArchUnitNET.xUnit;
 using CodeQualityTalk.Abstractions;
 using Xunit;
 using static ArchUnitNET.Fluent.ArchRuleDefinition;
-using Type = ArchUnitNET.Loader.Type;
 
 namespace CodeQualityTalk.Tests;
 
@@ -39,12 +38,9 @@ public class ArchitectureTests
     {
         Types()
             .That()
-            .ResideInNamespace("CodeQuality.Abstractions")
+            .ResideInNamespace("CodeQualityTalk.Abstractions")
             .Should()
-            .NotDependOnAnyTypesThat()
-            .ResideInNamespace("CodeQuality.Documents")
+            .NotDependOnAny( Types().That().DoNotResideInNamespace("CodeQualityTalk.Abstractions"))
             .Check(_testedProjects);
-            
-        
     }
 }

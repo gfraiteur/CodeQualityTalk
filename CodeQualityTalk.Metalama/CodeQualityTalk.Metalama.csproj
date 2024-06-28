@@ -7,9 +7,12 @@
         <Nullable>enable</Nullable>
         <RootNamespace>CodeQualityTalk</RootNamespace>
     </PropertyGroup>
-    
+
+    <Import Project="c:\src\Metalama.Extensions\Metalama.Extensions.Import.props"/>
+
     <ItemGroup>
-        <PackageReference Include="Metalama.Extensions.Architecture" Version="2024.2.10-preview"/>
+
+        <PackageReference Include="Metalama.Extensions.Architecture" Version="$(MetalamaExtensionsVersion)"/>
     </ItemGroup>
 
 </Project>

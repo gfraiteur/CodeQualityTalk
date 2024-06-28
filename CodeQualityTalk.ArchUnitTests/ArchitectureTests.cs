@@ -9,8 +9,9 @@ namespace CodeQualityTalk.Tests;
 
 public class ArchitectureTests
 {
-    private readonly Architecture _testedProjects = new ArchLoader().LoadAssembly(typeof(IDocumentFactory).Assembly).Build();
-    
+    private readonly Architecture _testedProjects =
+        new ArchLoader().LoadAssembly(typeof(IDocumentFactory).Assembly).Build();
+
     [Fact]
     public void TypesDerivedFromIFactory_ShouldBe_NamedFactory()
     {
@@ -40,7 +41,7 @@ public class ArchitectureTests
             .That()
             .ResideInNamespace("CodeQualityTalk.Abstractions")
             .Should()
-            .NotDependOnAny( Types().That().DoNotResideInNamespace("CodeQualityTalk.Abstractions"))
+            .NotDependOnAny(Types().That().DoNotResideInNamespace("CodeQualityTalk.Abstractions"))
             .Check(_testedProjects);
     }
 }

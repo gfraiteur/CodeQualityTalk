@@ -30,9 +30,13 @@ workspace.SourceCode.Types
 workspace.SourceCode.Types
     .Where(t => t.ContainingNamespace.FullName == "CodeQualityTalk.Abstractions")
     .SelectMany(t => t.GetOutboundReferences())
-    .Where(r => r.DestinationDeclaration.GetNamespace()?.FullName == "CodeQualityTalk.Documents")
+    .Where(r =>
+    {
+        var ns = r.DestinationDeclaration.GetNamespace()!.FullName;
+        return ns.StartsWith("CodeQualityTalk") && ns != "CodeQualityTalk.Abstractions";
+    })
     .Report(Severity.Warning, "MY003",
-        "The CodeQualityTalks.Abstractions namespace cannot use the CodeQualityTalk.Documents namespace.");
+        "The CodeQualityTalks.Abstractions namespace must only not have dependencies to other namespaces.");
 
 Console.WriteLine(
     $"{DiagnosticReporter.ReportedWarnings + DiagnosticReporter.ReportedErrors} architecture violations found.");

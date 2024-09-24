@@ -8,7 +8,7 @@ ide: QDNET
 #Specify inspection profile for code analysis
 profile:
   name: qodana.starter
-bootstrap: dotnet build
+bootstrap: sh ./prepare-qodana.sh
 exclude:
   - name: UnusedMemberInSuper.Global
   - name: ClassCanBeSealed.Global

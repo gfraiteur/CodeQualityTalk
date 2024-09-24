@@ -17,7 +17,7 @@ var workspace = Workspace.Load( args[0] );
 workspace.SourceCode.Types
     .Single( t => t.Name == "IDocumentFactory" )
     .GetDerivedTypes()
-    .Where( t => !t.Name.EndsWith( "Factory" ) )
+    .Where( t => !t.Name.EndsWith( "Factory", StringComparison.Ordinal ) )
     .Report( Severity.Warning, "MY001", "The type name must end with Factory because it implements IDocumentFactory." );
 
 // TypesDerivedFromIDocument_ShouldBe_InDocumentsNamespace
@@ -39,7 +39,7 @@ workspace.SourceCode.Types
         {
             var ns = r.DestinationDeclaration.GetNamespace()!.FullName;
 
-            return ns.StartsWith( "CodeQualityTalk" ) && ns != "CodeQualityTalk.Abstractions";
+            return ns.StartsWith( "CodeQualityTalk", StringComparison.Ordinal ) && ns != "CodeQualityTalk.Abstractions";
         } )
     .Report(
         Severity.Warning,

@@ -1,2 +1,2 @@
-dotnet --list-sdks
+ls -R
 dotnet build

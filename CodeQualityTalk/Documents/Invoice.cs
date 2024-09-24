@@ -1,17 +1,20 @@
+// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this repository root for details.
+
 using CodeQualityTalk.Abstractions;
 
 namespace CodeQualityTalk.Documents;
 
 internal class Invoice : IDocument
 {
-    public string OwnerId { get;  }
-    public string Name { get;  }
+    public string OwnerId { get; }
 
-    public Invoice(string ownerId, string name)
+    public string Name { get; }
+
+    public Invoice( string ownerId, string name )
     {
-        OwnerId = ownerId;
-        Name = name;
+        this.OwnerId = ownerId;
+        this.Name = name;
     }
 
-    public bool IsValid => string.IsNullOrEmpty(this.OwnerId);
+    public bool IsValid => string.IsNullOrEmpty( this.OwnerId );
 }

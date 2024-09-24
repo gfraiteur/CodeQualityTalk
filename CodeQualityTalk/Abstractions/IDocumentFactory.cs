@@ -1,6 +1,8 @@
-﻿namespace CodeQualityTalk.Abstractions;
+﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this repository root for details.
+
+namespace CodeQualityTalk.Abstractions;
 
 public interface IDocumentFactory
 {
-    IDocument CreateDocument(string name, DocumentCreationContext context);
+    IDocument CreateDocument( string name, DocumentCreationContext context );
 }

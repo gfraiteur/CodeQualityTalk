@@ -8,11 +8,9 @@
         <RootNamespace>CodeQualityTalk</RootNamespace>
     </PropertyGroup>
 
-    <Import Project="c:\src\Metalama.Extensions\Metalama.Extensions.Import.props"/>
-
     <ItemGroup>
 
-        <PackageReference Include="Metalama.Extensions.Architecture" Version="$(MetalamaExtensionsVersion)"/>
+        <PackageReference Include="Metalama.Extensions.Architecture" />
     </ItemGroup>
 
 </Project>

@@ -1,9 +1,11 @@
-﻿using Metalama.Extensions.Architecture.Aspects;
+﻿// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this repository root for details.
+
+using Metalama.Extensions.Architecture.Aspects;
 
 namespace CodeQualityTalk.Abstractions;
 
-[DerivedTypesMustRespectNamingConvention("*Factory")]
+[DerivedTypesMustRespectNamingConvention( "*Factory" )]
 public interface IDocumentFactory
 {
-    IDocument CreateDocument(string name, DocumentCreationContext context);
+    IDocument CreateDocument( string name, DocumentCreationContext context );
 }

@@ -1,3 +1,5 @@
+// Copyright (c) SharpCrafters s.r.o. See the LICENSE.md file in the root directory of this repository root for details.
+
 using ArchUnitNET.Domain;
 using ArchUnitNET.Loader;
 using ArchUnitNET.xUnit;
@@ -10,17 +12,17 @@ namespace CodeQualityTalk.Tests;
 public class ArchitectureTests
 {
     private readonly Architecture _testedProjects =
-        new ArchLoader().LoadAssembly(typeof(IDocumentFactory).Assembly).Build();
+        new ArchLoader().LoadAssembly( typeof(IDocumentFactory).Assembly ).Build();
 
     [Fact]
     public void TypesDerivedFromIFactory_ShouldBe_NamedFactory()
     {
         Types()
             .That()
-            .ImplementInterface(typeof(IDocumentFactory))
+            .ImplementInterface( typeof(IDocumentFactory) )
             .Should()
-            .HaveName("^.*Factory$", true)
-            .Check(_testedProjects);
+            .HaveName( "^.*Factory$", true )
+            .Check( this._testedProjects );
     }
 
     [Fact]
@@ -28,10 +30,10 @@ public class ArchitectureTests
     {
         Types()
             .That()
-            .ImplementInterface(typeof(IDocument))
+            .ImplementInterface( typeof(IDocument) )
             .Should()
-            .HaveFullName(@"^CodeQualityTalk\.Documents\..*", true)
-            .Check(_testedProjects);
+            .HaveFullName( @"^CodeQualityTalk\.Documents\..*", true )
+            .Check( this._testedProjects );
     }
 
     [Fact]
@@ -39,9 +41,9 @@ public class ArchitectureTests
     {
         Types()
             .That()
-            .ResideInNamespace("CodeQualityTalk.Abstractions")
+            .ResideInNamespace( "CodeQualityTalk.Abstractions" )
             .Should()
-            .NotDependOnAny(Types().That().DoNotResideInNamespace("CodeQualityTalk.Abstractions"))
-            .Check(_testedProjects);
+            .NotDependOnAny( Types().That().DoNotResideInNamespace( "CodeQualityTalk.Abstractions" ) )
+            .Check( this._testedProjects );
     }
 }

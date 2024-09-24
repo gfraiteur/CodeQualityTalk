@@ -18,7 +18,7 @@ exclude:
     
 failureConditions:
   severityThresholds:
-    critical: 1 # Critical and other severities
-    high: 1
+    critical: 0 
+    high: 0
     moderate: 100
       

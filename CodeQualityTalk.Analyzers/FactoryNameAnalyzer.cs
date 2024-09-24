@@ -25,10 +25,10 @@ namespace CodeQualityTalk.Analyzers
         {
             context.EnableConcurrentExecution();
             context.ConfigureGeneratedCodeAnalysis( GeneratedCodeAnalysisFlags.None );
-            context.RegisterSemanticModelAction( this.AnalyzeSemanticModel );
+            context.RegisterSemanticModelAction( AnalyzeSemanticModel );
         }
 
-        private void AnalyzeSemanticModel( SemanticModelAnalysisContext context )
+        private static void AnalyzeSemanticModel( SemanticModelAnalysisContext context )
         {
             new Walker( context ).Visit( context.FilterTree.GetRoot() );
         }
@@ -36,7 +36,7 @@ namespace CodeQualityTalk.Analyzers
         public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics { get; }
             = [_diagnosticDescriptor];
 
-        private class Walker : CSharpSyntaxWalker
+        private sealed class Walker : CSharpSyntaxWalker
         {
             private readonly SemanticModelAnalysisContext _context;
 
@@ -68,7 +68,7 @@ namespace CodeQualityTalk.Analyzers
                 var typeSymbol = this._context.SemanticModel.GetDeclaredSymbol( type );
 
                 if ( typeSymbol != null &&
-                     !type.Identifier.Text.EndsWith( "Factory" ) &&
+                     !type.Identifier.Text.EndsWith( "Factory", StringComparison.Ordinal ) &&
                      typeSymbol.AllInterfaces.Any( i => i.Name == "IDocumentFactory" ) )
                 {
                     this._context.ReportDiagnostic(

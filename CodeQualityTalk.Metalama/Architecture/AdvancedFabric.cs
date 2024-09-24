@@ -14,9 +14,9 @@ public class AdvancedFabric : ProjectFabric
     private const string _documentNamespace = "CodeQualityTalk.Documents";
 
     private static readonly DiagnosticDefinition<(INamedType Type, string Namespace)> _warning = new(
-        "MY001",
+        "MyMetalamaWarning01",
         Severity.Warning,
-        "(Metalama) The '{0}' type must be in the '{1}' namespace." );
+        "The '{0}' type must be in the '{1}' namespace." );
 
     public override void AmendProject( IProjectAmender amender )
     {

@@ -14,9 +14,9 @@ namespace CodeQualityTalk.Analyzers
     public class FactoryNameAnalyzer : DiagnosticAnalyzer
     {
         private static readonly DiagnosticDescriptor _diagnosticDescriptor = new(
-            "MY001",
+            "MyAnalyzerWarning01",
             "Types implementing IDocumentFactory must be named *Factory",
-            "(Analyzer) The type {0} must have the Factory suffix because it implements IDocumentFactory",
+            "The type {0} must have the Factory suffix because it implements IDocumentFactory",
             "Naming",
             DiagnosticSeverity.Warning,
             true );

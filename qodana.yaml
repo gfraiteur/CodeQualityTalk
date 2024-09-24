@@ -15,3 +15,10 @@ exclude:
   - name: RedundantUsingDirective
   - name: ClassNeverInstantiated.Global
   - name: CheckDependencyLicenses  
+    
+failureConditions:
+  severityThresholds:
+    critical: 1 # Critical and other severities
+    high: 1
+    moderate: 100
+      

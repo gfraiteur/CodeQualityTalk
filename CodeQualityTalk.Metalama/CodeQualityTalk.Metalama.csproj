@@ -10,7 +10,7 @@
 
     <ItemGroup>
 
-        <PackageReference Include="Metalama.Extensions.Architecture" />
+        <PackageReference Include="Metalama.Extensions.Architecture" Version="$(MetalamaExtensionsVersion)" />
     </ItemGroup>
 
 </Project>

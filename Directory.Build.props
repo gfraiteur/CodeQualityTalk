@@ -1,0 +1,6 @@
+<Project>
+    <PropertyGroup>
+      <MetalamaVersion>2024.2.24</MetalamaVersion>
+      <MetalamaExtensionsVersion>$(MetalamaVersion)</MetalamaExtensionsVersion>
+    </PropertyGroup>
+  </Project>

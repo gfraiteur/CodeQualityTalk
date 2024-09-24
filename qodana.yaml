@@ -14,3 +14,4 @@ exclude:
   - name: ClassCanBeSealed.Global
   - name: RedundantUsingDirective
   - name: ClassNeverInstantiated.Global
+  - name: CheckDependencyLicenses  

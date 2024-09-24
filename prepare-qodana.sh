@@ -1,2 +1,1 @@
-ls -R
 dotnet build

@@ -25,59 +25,30 @@ namespace CodeQualityTalk.Analyzers
         {
             context.EnableConcurrentExecution();
             context.ConfigureGeneratedCodeAnalysis( GeneratedCodeAnalysisFlags.None );
-            context.RegisterSemanticModelAction( AnalyzeSemanticModel );
+            context.RegisterSymbolAction( AnalyzeSymbol, SymbolKind.NamedType );
         }
 
-        private static void AnalyzeSemanticModel( SemanticModelAnalysisContext context )
+        private static void AnalyzeSymbol( SymbolAnalysisContext context )
         {
-            new Walker( context ).Visit( context.FilterTree.GetRoot() );
+            if ( context.Symbol is INamedTypeSymbol namedTypeSymbol &&
+                 !namedTypeSymbol.Name.EndsWith( "Factory", StringComparison.Ordinal ) &&
+                 namedTypeSymbol.AllInterfaces.Any( i => i.Name == "IDocumentFactory" ) )
+            {
+                foreach ( var syntaxReference in namedTypeSymbol.DeclaringSyntaxReferences )
+                {
+                    if ( syntaxReference.GetSyntax( context.CancellationToken ) is BaseTypeDeclarationSyntax syntax )
+                    {
+                        context.ReportDiagnostic(
+                            Diagnostic.Create(
+                                _diagnosticDescriptor,
+                                syntax.Identifier.GetLocation(),
+                                syntax.Identifier.Text ) );
+                    }
+                }
+            }
         }
 
         public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics { get; }
             = [_diagnosticDescriptor];
-
-        private sealed class Walker : CSharpSyntaxWalker
-        {
-            private readonly SemanticModelAnalysisContext _context;
-
-            public Walker( SemanticModelAnalysisContext context )
-            {
-                this._context = context;
-            }
-
-            public override void VisitClassDeclaration( ClassDeclarationSyntax node )
-            {
-                this.InspectType( node );
-                base.VisitClassDeclaration( node );
-            }
-
-            public override void VisitRecordDeclaration( RecordDeclarationSyntax node )
-            {
-                this.InspectType( node );
-                base.VisitRecordDeclaration( node );
-            }
-
-            public override void VisitStructDeclaration( StructDeclarationSyntax node )
-            {
-                this.InspectType( node );
-                base.VisitStructDeclaration( node );
-            }
-
-            private void InspectType( TypeDeclarationSyntax type )
-            {
-                var typeSymbol = this._context.SemanticModel.GetDeclaredSymbol( type );
-
-                if ( typeSymbol != null &&
-                     !type.Identifier.Text.EndsWith( "Factory", StringComparison.Ordinal ) &&
-                     typeSymbol.AllInterfaces.Any( i => i.Name == "IDocumentFactory" ) )
-                {
-                    this._context.ReportDiagnostic(
-                        Diagnostic.Create(
-                            _diagnosticDescriptor,
-                            type.Identifier.GetLocation(),
-                            type.Identifier.Text ) );
-                }
-            }
-        }
     }
 }

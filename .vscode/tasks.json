@@ -1,0 +1,22 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [    
+        {
+            "label": "Verify Architecture",
+            "type": "shell",
+            "command": "dotnet",
+            "problemMatcher": "$msCompile",
+            "args": [
+                "run",
+                "--project",
+                "${workspaceFolder}/CodeQualityTalk.Verifier/CodeQualityTalk.Verifier.csproj",
+                "${workspaceFolder}/CodeQualityTalk/CodeQualityTalk.csproj"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }   ]
+}

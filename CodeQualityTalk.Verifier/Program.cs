@@ -11,6 +11,7 @@ if ( args.Length != 1 )
     return 1;
 }
 
+WorkspaceCollection.Default.IgnoreLoadErrors = true;
 var workspace = Workspace.Load( args[0] );
 
 // TypesDerivedFromIFactory_ShouldBe_NamedFactory

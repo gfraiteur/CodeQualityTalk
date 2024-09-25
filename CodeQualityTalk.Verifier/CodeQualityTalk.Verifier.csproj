@@ -12,6 +12,13 @@
         
         <!-- Must include explicitly because the package has content. -->
         <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.MSBuild" Version="4.11.0"/>
+        
+        <PackageReference Include="Microsoft.Build" Version="17.11.4"/>
+        <PackageReference Include="Microsoft.Build.Framework" Version="17.11.4"/>
+        <PackageReference Include="Microsoft.Build.Tasks.Core" Version="17.11.4"/>
+        <PackageReference Include="Microsoft.Build.Utilities.Core" Version="17.11.4"/>
+        <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.11.0"/>
+
     </ItemGroup>
 
 </Project>

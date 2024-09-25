@@ -20,6 +20,9 @@ namespace CodeQualityTalk.Analyzers
             "Naming",
             DiagnosticSeverity.Warning,
             true );
+        
+        public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics { get; }
+            = [_diagnosticDescriptor];
 
         public override void Initialize( AnalysisContext context )
         {
@@ -48,7 +51,5 @@ namespace CodeQualityTalk.Analyzers
             }
         }
 
-        public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics { get; }
-            = [_diagnosticDescriptor];
     }
 }
